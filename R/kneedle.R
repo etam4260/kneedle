@@ -28,17 +28,13 @@ library(quantmod)
 #' kneedle()
 
 kneedle <- function(x, y, decreasing, sensitivity, concave) {
-  if(decreasing) {
-    y <- as.list(sort(unlist(y), decreasing = TRUE))
-  } else {
-    y <- as.list(sort(unlist(y), decreasing = FALSE))
-  }
 
   data <- matrix(unlist(list(x, y)), ncol = 2)
+  data <- data[order(data[,1], decreasing = decreasing)]
   data[ ,1] <- (data[, 1])/max(data[ ,1])
   data[ ,2] <- (data[, 2])/max(data[ ,2])
 
-  plot(data)
+  #plot(data)
 
   if(concave && !decreasing) {
     differ <- abs(c(data[ ,2] - data[ ,1]))
@@ -49,7 +45,8 @@ kneedle <- function(x, y, decreasing, sensitivity, concave) {
   } else if(!concave && decreasing) {
     differ <- abs(c(data[ ,2] - (1 - data[ ,1])))
   }
-  plot(differ)
+
+  #plot(differ)
   peak.indices <- findPeaks(differ) - 1
 
   data <- cbind(data, differ)
