@@ -1,10 +1,10 @@
 Package: kneedle
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Kneedle Algorithm; detecting knees in graphs
+Version: 1.0.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Emmet", "Tam", , "emmet_tam@yahoo.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8

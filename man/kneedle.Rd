@@ -2,17 +2,24 @@
 % Please edit documentation in R/kneedle.R
 \name{kneedle}
 \alias{kneedle}
-\title{Kneedle}
+\title{kneedle
+This function allows you to find the knee of a graph}
 \usage{
 kneedle(x, y, decreasing, sensitivity, concave)
 }
 \arguments{
-\item{y}{}
+\item{x}{list list of x coordinates}
+
+\item{y}{list list of y coordinates}
+
+\item{decreasing}{is the function increasing?}
+
+\item{sensitivity}{how sensitive should knee detection be?}
+
+\item{concave}{is this concave or convex?}
 }
 \description{
+kneedle
 This function allows you to find the knee of a graph
-}
-\examples{
-kneedle()
 }
 \keyword{knee}

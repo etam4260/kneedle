@@ -1,11 +1,11 @@
-library(quantmod)
+#' @import quantmod
+
 
 # Applies the kneedle algorithm developed by:
 # https://raghavan.usc.edu/papers/kneedle-simplex11.pdf
 # Finding a "Kneedle" in a Haystack:
 # Detecting Knee Points in System Behavior
-# Currently this function only works for monotonically increasing x starting at
-# 0
+
 # x <- a list for the x input
 # y <- a list for the y input
 # decreasing <- determine if data is decreasing or increasing
@@ -15,16 +15,16 @@ library(quantmod)
 
 
 #' Kneedle
-#'
+#' @name kneedle
+#' @title kneedle
 #' This function allows you to find the knee of a graph
-#' @param x
-#' @param y
-#' @param decreasing
-#' @param sensitivity
-#' @param concave
+#' @param x list list of x coordinates
+#' @param y list list of y coordinates
+#' @param decreasing is the function increasing?
+#' @param sensitivity how sensitive should knee detection be?
+#' @param concave is this concave or convex?
 #' @keywords knee
 #' @export
-#' @examples
 #' kneedle()
 
 kneedle <- function(x, y, decreasing, sensitivity, concave) {
