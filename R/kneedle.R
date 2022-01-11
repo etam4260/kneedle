@@ -30,11 +30,11 @@ library(quantmod)
 kneedle <- function(x, y, decreasing, sensitivity, concave) {
 
   data <- matrix(unlist(list(x, y)), ncol = 2)
-  data <- data[order(data[,1], decreasing = decreasing)]
-  data[ ,1] <- (data[, 1])/max(data[ ,1])
-  data[ ,2] <- (data[, 2])/max(data[ ,2])
-
-  #plot(data)
+  data <- data[order(data[,1], decreasing = decreasing), ]
+  maxy <- max(y)
+  miny <- min(y)
+  data[ ,1] <- (data[, 1]- min(data[, 1]))/(max(data[ ,1])-min(data[, 1]))
+  data[ ,2] <- (data[, 2]- min(data[, 2]))/(max(data[ ,2])- min(data[, 2]))
 
   if(concave && !decreasing) {
     differ <- abs(c(data[ ,2] - data[ ,1]))
@@ -46,20 +46,23 @@ kneedle <- function(x, y, decreasing, sensitivity, concave) {
     differ <- abs(c(data[ ,2] - (1 - data[ ,1])))
   }
 
-  #plot(differ)
   peak.indices <- findPeaks(differ) - 1
 
   data <- cbind(data, differ)
-  diffofdiffer <- append(diff(data[, 3]), 0)
-  data <-cbind(data, diffofdiffer)
 
-  T.lm.x.s <- sensitivity * mean(data[,4])
+  diffx = diff(data[, 1])
+
+  T.lm.x.s <- sensitivity * mean(diffx)
+
   knee = NULL
   for(i in 1:length(peak.indices)) {
-    for(j in peak.indices[i]:if(i+1 < length(peak.indices)) peak.indices[i+1] else i) {
-      T <- differ[i] - sensitivity * (T.lm.x.s)
+    T <- data[peak.indices[i] ,3] - (T.lm.x.s)
 
-      if(diffofdiffer[j] < T) {
+    y.value <- data[peak.indices[i] ,3]
+
+    for(j in peak.indices[i]:if(i+1 < length(peak.indices)) peak.indices[i+1] else i) {
+
+      if(differ[j] < T) {
         knee = peak.indices[i];
         break;
       }
@@ -69,5 +72,5 @@ kneedle <- function(x, y, decreasing, sensitivity, concave) {
     }
   }
 
-  return(max(data[ ,1]) * data[knee, 1])
+  return((maxy + miny) * (data[knee, 2] + miny))
 }
