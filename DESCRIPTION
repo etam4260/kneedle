@@ -4,7 +4,8 @@ Version: 1.0.0
 Authors@R: 
     person("Emmet", "Tam", , "emmet_tam@yahoo.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: 
+Description: The kneedle algorithm described in https://raghavan.usc.edu/papers/kneedle-simplex11.pdf consists
+	is the main functionality of this package. It find the maximal point of inflection within discrete datasets.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
