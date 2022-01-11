@@ -8,6 +8,8 @@ Description: The kneedle algorithm described in https://raghavan.usc.edu/papers/
 	is the main functionality of this package. It find the maximal point of inflection within discrete datasets.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
+Imports:
+	quantmod
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
