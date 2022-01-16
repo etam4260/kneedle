@@ -19,16 +19,16 @@ library(quantmod)
 #' @name kneedle
 #' @title kneedle
 #' This function allows you to find the knee of a graph
-#' @param x list list of x coordinates
-#' @param y list list of y coordinates
-#' @param decreasing is the function increasing?
-#' @param sensitivity how sensitive should knee detection be?
-#' @param concave is this concave or convex?
+#' @param x list list of x coordinates.
+#' @param y list list of y coordinates.
+#' @param decreasing boolean is the function increasing? Defaults to FALSE.
+#' @param sensitivity integer how sensitive should knee detection be? Defaults to 1. Can be a float/double.
+#' @param concave boolean is this concave or convex? Defaults to TRUE.
 #' @keywords knee
 #' @export
 #' kneedle()
 
-kneedle <- function(x, y, decreasing, sensitivity, concave) {
+kneedle <- function(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE) {
 
   data <- matrix(unlist(list(x, y)), ncol = 2)
   data <- data[order(data[,1], decreasing = decreasing), ]
