@@ -1,34 +1,37 @@
-# About
-Implementation of the kneedle algorithm in R.
-https://raghavan.usc.edu/papers/kneedle-simplex11.pdf
 
-Satopaa, V., Albrecht, J., Irwin, D., & Raghavan, B. (2011, June). 
-Finding a" kneedle" in a haystack: Detecting knee points in system behavior. 
-In 2011 31st international conference on distributed computing systems workshops (pp. 166-171). IEEE.
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Setup
+# kneedle
 
-https://github.com/etam4260/kneedle
+<!-- badges: start -->
+<!-- badges: end -->
 
-This package can be downloaded using:
+The goal of kneedle is to provide an easy to use implementation of the
+kneedle algorithm developed at
+<https://raghavan.usc.edu/papers/kneedle-simplex11.pdf>. The main
+functionality is to detect inflection points, more commonly associated
+in continuous function, in discrete datasets.
 
-library("devtools")
-install_github("etam4260/kneedle")
+## Installation
 
-library("kneedle")
+You can install the development version from
+[GitHub](https://github.com/) with:
 
+``` r
+# install.packages("devtools")
+devtools::install_github("etam4260/kneedle")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(kneedle)
+#> Registered S3 method overwritten by 'quantmod':
+#>   method            from
+#>   as.zoo.data.frame zoo
 knee <- kneedle(c(1,2,3,4,5,6), c(0,1,2,3,40,100))
-
-Returns a (x,y) pair in vector form. For this example it should output (4,3).
-
-
-# Disclaimers
-
-THIS IS CURRENTLY A WORK IN PROGRESS. It might be buggy or not provide
-the right outputs. 
-
-# Resources
-
-A webapp developed by those who create the kneedle
-algorithm in python can be found here:
-https://ikneed.herokuapp.com/
+print(knee)
+#> [1] 4 3
+```

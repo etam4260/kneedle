@@ -27,7 +27,8 @@ library(quantmod)
 #' @keywords knee
 #' @export
 #' @returns This function returns a x,y coordinate pair that corresponds to the knee point
-#' kneedle()
+#' @examples 
+#' x <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60))
 
 kneedle <- function(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE) {
   # Make sure inputs are correct
