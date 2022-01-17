@@ -5,18 +5,22 @@
 \title{kneedle
 This function allows you to find the knee of a graph}
 \usage{
-kneedle(x, y, decreasing, sensitivity, concave)
+kneedle(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE)
 }
 \arguments{
-\item{x}{list list of x coordinates}
+\item{x}{list list of x coordinates.}
 
-\item{y}{list list of y coordinates}
+\item{y}{list list of y coordinates.}
 
-\item{decreasing}{is the function increasing?}
+\item{decreasing}{boolean is the function increasing? Defaults to FALSE.}
 
-\item{sensitivity}{how sensitive should knee detection be?}
+\item{sensitivity}{integer how sensitive should knee detection be? Defaults to 1. Can be a float/double.}
 
-\item{concave}{is this concave or convex?}
+\item{concave}{boolean is this concave or convex? Defaults to TRUE.}
+}
+\value{
+a x,y coordinate pair
+kneedle()
 }
 \description{
 kneedle

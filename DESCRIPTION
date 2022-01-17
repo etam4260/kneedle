@@ -4,13 +4,16 @@ Version: 1.0.0
 Authors@R: 
     person("Emmet", "Tam", , "emmet_tam@yahoo.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: The kneedle algorithm described in https://raghavan.usc.edu/papers/kneedle-simplex11.pdf consists
-	is the main functionality of this package. It find the maximal point of inflection within discrete datasets.
+Description: The kneedle algorithm described in https://raghavan.usc.edu/papers/kneedle-simplex11.pdf composes
+	 the main functionality of this package. It finds the maximal point of inflection within discrete data.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Imports:
 	quantmod
+Suggests:
+    testthat (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2.9000
+Config/testthat/edition: 3

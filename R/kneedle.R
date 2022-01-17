@@ -91,5 +91,5 @@ kneedle <- function(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE) {
   x <- ((maxx - minx) * (data[knee, 1])) + minx
   y <- ((maxy - miny) * (data[knee, 2])) + miny
   
-  return(c(x,y))
+  return(c(as.numeric(x),as.numeric(y)))
 }
