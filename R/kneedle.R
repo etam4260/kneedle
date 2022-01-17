@@ -26,6 +26,7 @@ library(quantmod)
 #' @param concave boolean is this concave or convex? Defaults to TRUE.
 #' @keywords knee
 #' @export
+#' @returns a x,y coordinate pair
 #' kneedle()
 
 kneedle <- function(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE) {
