@@ -6,8 +6,7 @@ Authors@R:
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: The kneedle algorithm described in https://raghavan.usc.edu/papers/kneedle-simplex11.pdf composes
 	 the main functionality of this package. It finds the maximal point of inflection within discrete data.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Imports:
 	quantmod
 Suggests:
