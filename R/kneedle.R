@@ -29,11 +29,24 @@ library(quantmod)
 #' kneedle()
 
 kneedle <- function(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE) {
-
+  # Make sure inputs are correct
+  if(length(x) == 0 || length(y) == 0) {
+    stop("Make sure size of both inputs x and y are greater than 0")
+  }
+  if(typeof(x) == "list"|| typeof(y) == "list" || is.data.frame(x) || 
+     is.data.frame(y) || is.array(x) || is.array(y) || is.matrix(x) || is.matrix(y)) {
+    stop("Make sure both inputs x and y are vectors")
+  }
+  if(length(x) != length(y)) {
+    stop("Make sure size of both inputs x and y are equal")
+  }
+  
   data <- matrix(unlist(list(x, y)), ncol = 2)
   data <- data[order(data[,1], decreasing = decreasing), ]
   maxy <- max(y)
   miny <- min(y)
+  maxx <- max(x)
+  minx <- min(x)
   data[ ,1] <- (data[, 1]- min(data[, 1]))/(max(data[ ,1])-min(data[, 1]))
   data[ ,2] <- (data[, 2]- min(data[, 2]))/(max(data[ ,2])- min(data[, 2]))
 
@@ -73,5 +86,12 @@ kneedle <- function(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE) {
     }
   }
 
-  return((maxy + miny) * (data[knee, 2] + miny))
+  # Returns the x,y coordinate values
+  View(data)
+  print(data[knee, 1] + minx)
+  print(maxx + minx)
+  x <- ((maxx - minx) * (data[knee, 1])) + minx
+  y <- ((maxy - miny) * (data[knee, 2])) + miny
+  
+  return(c(x,y))
 }
