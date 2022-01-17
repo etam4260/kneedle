@@ -1,4 +1,3 @@
-library(quantmod)
 #' @import quantmod
 
 
