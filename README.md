@@ -62,6 +62,8 @@ library(kneedle)
 knee <- kneedle(c(1,2,3,4,5), c(0,20,40,41,42), concave = FALSE, decreasing = FALSE)
 print(knee)
 #> [1]  3 40
+
+
 #|
 #| -------\
 #|         \
@@ -90,7 +92,7 @@ knee <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60), sensitivity = 1)
 print(knee)
 #> [1] 3 2
 
-# In this case, we see that that (3,2) is no longer considered a knee point. No
+# In this case with sensitivity = 2, we see that that (3,2) is no longer considered a knee point. No
 # other knees were detected.
 #|
 #|          /
