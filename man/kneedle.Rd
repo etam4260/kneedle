@@ -20,10 +20,12 @@ kneedle(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE)
 }
 \value{
 This function returns a x,y coordinate pair that corresponds to the knee point
-kneedle()
 }
 \description{
 kneedle
 This function allows you to find the knee of a graph
+}
+\examples{
+x <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60))
 }
 \keyword{knee}
