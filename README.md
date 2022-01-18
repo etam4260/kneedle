@@ -60,13 +60,16 @@ library(kneedle)
 #| /
 #|______________
 knee <- kneedle(c(1,2,3,4,5), c(0,20,40,41,42), concave = FALSE, decreasing = FALSE)
-
+print(knee)
+#> [1]  3 40
 #|
 #| -------\
 #|         \
 #|          \
 #|______________
 knee <- kneedle(c(1,2,3,4,5), c(100,99,98,50,0), concave = FALSE, decreasing = TRUE)
+print(knee)
+#> [1]  3 98
 ```
 
 ## Sensitivity
