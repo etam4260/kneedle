@@ -10,9 +10,14 @@ License: MIT + file LICENSE
 Imports:
 	quantmod
 Suggests:
+    rmarkdown,
+    knitr,
     testthat (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2.9000
 Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://github.com/etam4260/kneedle
+BugReports: https://github.com/etam4260/kneedle/issues
