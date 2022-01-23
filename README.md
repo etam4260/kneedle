@@ -23,6 +23,9 @@ an inflection point, more commonly associated in continuous function, in
 discrete datasets which closely follow an exponential decay/growth,
 logarithmic decay/growth.
 
+Please report bugs to Emmet Tam, at <emmet_tam@yahoo.com> or through
+github.
+
 ## Installation
 
 You can install the development version from
@@ -43,9 +46,13 @@ library(kneedle)
 #>   method            from
 #>   as.zoo.data.frame zoo
 
-# The base function assumes the graph is both concave and increasing.
-# First and second inputs must be vectors of integers or doubles.
+# The base function 'guesses' whether the data is increasing or decreasing.
+# (Will assume if the derivative of the first and last point is positive or negative:
+# positive is increasing and negative decreasing)
+# It also guesses the 'concavity' of the data. (Will use second derivative calculations)
+# If no sensitivity value provided, it will default to a sensitivity of 1. 
 
+# First and second inputs must be vectors of integers or doubles.
 
 knee <- kneedle(c(1,2,3,4,5,6), c(0,1,2,3,40,100))
 print(knee)
@@ -61,8 +68,9 @@ This describes a few of the parameters that can be changed.
 
 ``` r
 library(kneedle)
-#Concavity parameter must be changed if the graph is convex. Furthermore, you 
-#must specify if the y is increasing or decreasing as x increases. 
+# Concavity parameter can be changed if the graph is convex. Furthermore, you 
+# specify if the y is increasing or decreasing as x increases. However, the
+# algorithm has 'autodetection' for those values.
 
 knee <- kneedle(c(1,2,3,4,5), c(0,20,40,41,42), concave = FALSE, decreasing = FALSE)
 print(knee)
