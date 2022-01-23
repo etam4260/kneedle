@@ -32,7 +32,7 @@ following an object oriented implementation (KneeLocator in Python and Kneer) of
 algorithm, this takes a more functional approach which is easier to understand
 for beginners. The main functionality is to detect an inflection point, 
 more commonly associated in continuous function, in discrete datasets which closely
-follow an exponential decay/growth, logarithmic decay/growth.
+follow an exponential decay or growth or logarithmic decay or growth.
 
 Please report bugs to Emmet Tam, at emmet_tam@yahoo.com or through github.
 
@@ -54,7 +54,9 @@ library(kneedle)
 # The base function 'guesses' whether the data is increasing or decreasing.
 # (Will assume if the derivative of the first and last point is positive or negative:
 # positive is increasing and negative decreasing)
-# It also guesses the 'concavity' of the data. (Will use second derivative calculations)
+# It also guesses the 'concavity' of the data. (Will use second derivative calculations
+# using all the points and then taking the mean of those values: if the mean is >= 0, then
+# it is concave; if mean is < 0, then is convex)
 # If no sensitivity value provided, it will default to a sensitivity of 1. 
 
 # First and second inputs must be vectors of integers or doubles.
