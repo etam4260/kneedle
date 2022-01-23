@@ -5,18 +5,18 @@
 \title{kneedle
 This function allows you to find the knee of a graph}
 \usage{
-kneedle(x, y, decreasing = FALSE, sensitivity = 1, concave = TRUE)
+kneedle(x, y, decreasing, concave, sensitivity = 1)
 }
 \arguments{
 \item{x}{A vector of x coordinates.}
 
 \item{y}{A vector of y coordinates.}
 
-\item{decreasing}{Is the function increasing? Defaults to FALSE.}
+\item{decreasing}{Is the function increasing? Algorithm will take a guess at direction of data if not specified.}
+
+\item{concave}{Is this concave or convex? Algorithm will take a guess at concavity if not specified.}
 
 \item{sensitivity}{How sensitive should knee detection be? Defaults to 1. Can be a float/double.}
-
-\item{concave}{Is this concave or convex? Defaults to TRUE.}
 }
 \value{
 This function returns a x,y coordinate pair that corresponds to the knee point

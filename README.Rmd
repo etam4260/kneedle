@@ -27,9 +27,12 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The goal of kneedle is to provide an easy to use implementation of the kneedle 
-algorithm developed at https://raghavan.usc.edu/papers/kneedle-simplex11.pdf.
-The main functionality is to detect an inflection point, more commonly associated 
-in continuous function, in discrete datasets.
+algorithm developed at https://raghavan.usc.edu/papers/kneedle-simplex11.pdf. Rather than
+following an object oriented implementation (KneeLocator in Python and Kneer) of the
+algorithm, this takes a more functional approach which is easier to understand
+for beginners. The main functionality is to detect an inflection point, 
+more commonly associated in continuous function, in discrete datasets which closely
+follow an exponential decay/growth, logarithmic decay/growth.
 
 ## Installation
 
