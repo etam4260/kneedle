@@ -42,16 +42,14 @@ library(kneedle)
 # The base function assumes the graph is both concave and increasing.
 # First and second inputs must be vectors of integers or doubles.
 
+
+knee <- kneedle(c(1,2,3,4,5,6), c(0,1,2,3,40,100))
+print(knee)
+#> [1] 4 3
 plot(c(1,2,3,4,5,6), c(0,1,2,3,40,100), xlab = "x", ylab = "y", pch=21, col="blue", bg="lightblue", type = "b")
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
-
-``` r
-knee <- kneedle(c(1,2,3,4,5,6), c(0,1,2,3,40,100))
-print(knee)
-#> [1] 4 3
-```
 
 ## Parameters
 
@@ -62,27 +60,23 @@ library(kneedle)
 #Concavity parameter must be changed if the graph is convex. Furthermore, you 
 #must specify if the y is increasing or decreasing as x increases. 
 
+knee <- kneedle(c(1,2,3,4,5), c(0,20,40,41,42), concave = FALSE, decreasing = FALSE)
+print(knee)
+#> [1]  3 40
 plot(c(1,2,3,4,5), c(0,20,40,41,42), xlab = "x", ylab = "y", pch=21, col="blue", bg="lightblue", type = "b")
 ```
 
 <img src="man/figures/README-parameters-1.png" width="100%" />
 
 ``` r
-knee <- kneedle(c(1,2,3,4,5), c(0,20,40,41,42), concave = FALSE, decreasing = FALSE)
+
+knee <- kneedle(c(1,2,3,4,5), c(100,99,98,50,0), concave = FALSE, decreasing = TRUE)
 print(knee)
-#> [1]  3 40
-
-
+#> [1]  3 98
 plot(c(1,2,3,4,5), c(100,99,98,50,0), xlab = "x", ylab = "y", pch=21, col="blue", bg="lightblue", type = "b")
 ```
 
 <img src="man/figures/README-parameters-2.png" width="100%" />
-
-``` r
-knee <- kneedle(c(1,2,3,4,5), c(100,99,98,50,0), concave = FALSE, decreasing = TRUE)
-print(knee)
-#> [1]  3 98
-```
 
 ## Sensitivity
 
@@ -94,21 +88,18 @@ library(kneedle)
 # it. A higher sensitivity make the rules more 'stringent' in classifying a 
 # 'candidate knee' point as a knee. 
 
-plot(c(1,2,3,4,5), c(0,1,2,40,60), xlab = "x", ylab = "y", pch=21, col="blue", bg="lightblue", type = "b")
 knee <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60), sensitivity = 1)
 print(knee)
 #> [1] 3 2
+plot(c(1,2,3,4,5), c(0,1,2,40,60), xlab = "x", ylab = "y", pch=21, col="blue", bg="lightblue", type = "b")
 
 # In this case with sensitivity = 2, we see that that (3,2) is no longer considered a knee point. No
 # other knees were detected.
 
+knee <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60), sensitivity = 2)
+print(knee)
+#> numeric(0)
 plot(c(1,2,3,4,5), c(0,1,2,40,60), xlab = "x", ylab = "y", pch=21, col="blue", bg="lightblue", type = "b")
 ```
 
 <img src="man/figures/README-sensitivity-1.png" width="100%" />
-
-``` r
-knee <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60), sensitivity = 2)
-print(knee)
-#> numeric(0)
-```
