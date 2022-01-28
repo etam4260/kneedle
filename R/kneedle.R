@@ -14,7 +14,7 @@
 
 
 
-#' Kneedle
+#' kneedle
 #' @name kneedle
 #' @title kneedle
 #' This function allows you to find the knee of a graph
@@ -26,7 +26,7 @@
 #' @keywords knee
 #' @export
 #' @returns This function returns a x,y coordinate pair that corresponds to the knee point
-#' @examples 
+#' @examples
 #' x <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60))
 
 kneedle <- function(x, y, decreasing, concave, sensitivity = 1) {
@@ -34,21 +34,21 @@ kneedle <- function(x, y, decreasing, concave, sensitivity = 1) {
   if(length(x) == 0 || length(y) == 0) {
     stop("Make sure size of both inputs x and y are greater than 0")
   }
-  if(typeof(x) == "list"|| typeof(y) == "list" || is.data.frame(x) || 
+  if(typeof(x) == "list"|| typeof(y) == "list" || is.data.frame(x) ||
      is.data.frame(y) || is.array(x) || is.array(y) || is.matrix(x) || is.matrix(y)) {
     stop("Make sure both inputs x and y are vectors")
   }
   if(length(x) != length(y)) {
     stop("Make sure size of both inputs x and y are equal")
   }
-  
+
   data <- matrix(unlist(list(x, y)), ncol = 2)
   # This decreasing value has nothing to do with the user inputted value.
   data <- data[order(data[,1], decreasing = FALSE), ]
-  
-  
+
+
   # If both decreasing and concave are not specified, then this algorithm will
-  # take a guess at those parameters instead of defaulting to certain values. 
+  # take a guess at those parameters instead of defaulting to certain values.
   # One method is to take the derivative of the starting point to the ending point
   # from min x value to max x value. This should be similar to taking the average of all
   # derivatives from xi to xi+1 where i = 1 to i = length(xvalues)
@@ -61,11 +61,11 @@ kneedle <- function(x, y, decreasing, concave, sensitivity = 1) {
       decreasing = TRUE
     }
   }
-  
+
   # To determine concavity we need to look at the second derivative of the
   # entire set of discrete data from xi to xi+1 where i = 1 to i = length(xvalues)
   # Taking the average of all the second derivatives, if greater or equal to 0
-  # then concave up. If less than 0 then concave down. 
+  # then concave up. If less than 0 then concave down.
   if(missing(concave)) {
     secondderiv <- diff(diff(data[, 2]) / diff(data[, 1]))
     if(mean(secondderiv) > 0) {
@@ -74,7 +74,7 @@ kneedle <- function(x, y, decreasing, concave, sensitivity = 1) {
       concave = FALSE
     }
   }
-  
+
   maxy <- max(y)
   miny <- min(y)
   maxx <- max(x)
@@ -91,7 +91,7 @@ kneedle <- function(x, y, decreasing, concave, sensitivity = 1) {
   } else if(!concave && decreasing) {
     differ <- abs(c(data[ ,2] - (1 - data[ ,1])))
   }
-  
+
 
   peak.indices <- findPeaks(differ) - 1
 
@@ -100,12 +100,12 @@ kneedle <- function(x, y, decreasing, concave, sensitivity = 1) {
   diffx = diff(data[, 1])
   T.lm.x.s <- sensitivity * mean(diffx)
   knee = NULL
-  
+
   for(i in 1:length(peak.indices)) {
     T <- data[peak.indices[i] ,3] - (T.lm.x.s)
 
     y.value <- data[peak.indices[i] ,3]
-  
+
     for(j in (peak.indices[i]):if(i+1 < length(peak.indices)) peak.indices[i+1] else length(differ)) {
       if(differ[j] < T) {
         knee = peak.indices[i];
@@ -120,6 +120,6 @@ kneedle <- function(x, y, decreasing, concave, sensitivity = 1) {
   # Returns the x,y coordinate values
   x <- ((maxx - minx) * (data[knee, 1])) + minx
   y <- ((maxy - miny) * (data[knee, 2])) + miny
-  
+
   return(c(as.numeric(x),as.numeric(y)))
 }
