@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![codecov.io](https://codecov.io/github/etam4260/kneedle/coverage.svg?branch=master)](https://codecov.io/github/etam4260/kneedle?branch=master)
+[![codecov.io](https://codecov.io/gh/etam4260/kneedle/coverage.svg)](https://codecov.io/gh/etam4260/kneedle)
 <!-- badges: end -->
 
 The goal of kneedle is to provide an easy to use implementation of the
