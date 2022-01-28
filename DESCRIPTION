@@ -12,7 +12,8 @@ Imports:
 Suggests:
     rmarkdown,
     knitr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    covr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

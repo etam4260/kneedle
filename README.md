@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges: start -->
-<!-- badges: end -->
 
 # kneedle
 
 <!-- badges: start -->
+
+[![codecov.io](https://codecov.io/github/etam4260/kneedle/coverage.svg?branch=master)](https://codecov.io/github/etam4260/kneedle?branch=master)
 <!-- badges: end -->
 
 The goal of kneedle is to provide an easy to use implementation of the
