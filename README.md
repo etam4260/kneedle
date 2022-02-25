@@ -18,13 +18,13 @@ kneedle algorithm developed at
 <https://raghavan.usc.edu/papers/kneedle-simplex11.pdf>. Rather than
 following an object oriented implementation (KneeLocator in Python and
 Kneer) of the algorithm, this takes a more functional approach which is
-easier to understand for beginners. The main functionality is to detect
-an inflection point, more commonly associated in continuous function, in
-discrete datasets which closely follow an exponential decay or growth or
-logarithmic decay or growth.
+easier to understand for beginners and is consistent with the R
+programming paradigm. The main goal is to detect a knee when two sets of
+points are plotted again each other and can be closely modeled by
+exponential decay/growth or logarithmic decay/growth.
 
-Please report bugs to Emmet Tam, at <emmet_tam@yahoo.com> or through
-github.
+Please report bugs to Emmet Tam, at <emmet_tam@yahoo.com> or at
+<https://github.com/etam4260/kneedle/issues>.
 
 ## Installation
 
@@ -107,8 +107,8 @@ print(knee)
 #> [1] 3 2
 plot(c(1,2,3,4,5), c(0,1,2,40,60), xlab = "x", ylab = "y", pch=21, col="blue", bg="lightblue", type = "b")
 
-# In this case with sensitivity = 2, we see that that (3,2) is no longer considered a knee point. No
-# other knees were detected.
+# In this case with sensitivity = 2, we see that that (3,2) is no longer considered a knee point. 
+# No other knees were detected.
 
 knee <- kneedle(c(1,2,3,4,5), c(0,1,2,40,60), sensitivity = 2)
 print(knee)
